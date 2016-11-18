@@ -1,0 +1,25 @@
+<ion-view ng-controller="starterCtrl">
+  <ion-header-bar class="no-border  bar-light">
+    <img src="img/Logo.png" width="42" height="38">
+    <div class="button-right">
+      <button class="button button-clear  home-buttons" >Help</button>
+    </div>
+  </ion-header-bar>
+  <ion-content scroll="false" class="content">
+    <div ng-show = "log"><p style="color: #db0000">Please enter your email and password</p></div>
+    <div ng-show = "log1"><p style="color: #db0000">Wrong email or password</p></div>
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" placeholder="E maill" ng-model ="userLogin">
+      </label>
+      <br>
+      <label class="item item-input">
+        <input type="Password" placeholder="Password" ng-model ="userPassword">
+      </label>
+      </br>
+      <button class="button button-calm" ng-click="login(userLogin,userPassword)">Login</button>
+      <button class="button button-clear home-buttons">Forget your password?</button>
+    </div>
+   </ion-content>
+
+</ion-view >

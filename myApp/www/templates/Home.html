@@ -1,0 +1,27 @@
+<ion-view ng-controller="starterCtrl">
+  <ion-header-bar class="no-border  bar-light">
+    <img src="img/Logo.png" width="42" height="38">
+    <div class="button-right">
+      <button  class="button button-clear home-buttons" ng-click = "go('/home/login')">Sign in</button>
+      <button class="button button-clear  home-buttons" >Help</button>
+    </div>
+  </ion-header-bar>
+  <ion-content scroll="false" class="content">
+    <ion-slide-box style="width: 100%" class="carousel-img" on-slide-changed="slideHasChanged($index)">
+      <ion-slide>
+        <img style="width: 100%; height: 100%" src="img/comf1.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img style="width: 100%; height: 100%" src="img/comf2.jpg">
+      </ion-slide>
+    </ion-slide-box>
+    <div><h1 style="font-weight: bold">Some Text Here</h1></div>
+  </ion-content>
+  <ion-footer-bar class="no-border bar-light">
+    <div class="button-bar">
+      <button class="button button-clear  home-buttons">Privacy Police</button>
+      <button class="button button-clear  home-buttons">Terms of Use</button>
+      <button class="button button-clear home-buttons">Something else</button>
+    </div>
+  </ion-footer-bar>
+</ion-view>

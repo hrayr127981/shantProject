@@ -1,0 +1,60 @@
+/* Empty. Add your own CSS if you like */
+
+.home-buttons{
+  color: #333333 !important;
+  font-size: 1em !important;
+  text-decoration: underline;
+}
+.button-right{
+  width: 100%;
+  text-align:right;
+}
+.no-border{
+  background-image: none !important;
+}
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.carousel-img{
+  height: 36%;
+}
+.carousel-img .slider-pager{
+  display: none;
+}
+.clear{
+  font-size: 2em !important;
+}
+.popover-arrow {
+  display:none !important;
+}
+.platform-ios .popover{
+  box-shadow: none !important;
+}
+.platform-android .popover{
+  margin-top: 12px;
+  box-shadow: none !important;
+  background-color: #666666;
+}
+.dropdown-menu{
+  border-radius: 0 !important;
+  border: 1px solid #797979;
+  box-shadow: none;
+  background-color: #666666;
+  width: 44%;
+  height: 38%;
+  top: 23px !important;
+  left: 15px !important;
+}
+.popover-backdrop.active{
+  background-color: rgba(0, 0, 0, 0);
+}
+.menu-item{
+  background-color: #666666 !important;
+  color: #ffffff !important;
+  padding: 5px 2px !important;
+}
