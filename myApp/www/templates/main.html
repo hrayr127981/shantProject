@@ -13,4 +13,15 @@
           <button class="button button-clear ion-ios-search-strong clear button-icon icon"style="margin-right:10px"></button>
         </ion-nav-buttons>
     </ion-nav-bar>
+  <ion-content>
+    <div class="video-container">
+        <iframe ng-src="{{mostPopularvidoes}}" frameborder="0" width="560" height="315" allowfullscreen></iframe>
+    </div>
+  <p class = "parShant">Popular in Shant<br></p>
+    <ion-scroll class="horizontall" direction="x" scrollbar-x="false">
+      <div class="pics" ng-repeat = "thumb in popolarByview">
+        <img ng-src="{{thumb.thumbnails.high.url}}">
+      </div>
+    </ion-scroll>
+  </ion-content>
 </ion-view>

@@ -2,24 +2,43 @@
  * Created by Galust on 11/17/2016.
  */
 
-myapp.controller('starterCtrl', function ($scope, $location,$ionicPopover,$http) {
-  $scope.videos = [];
+myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi','$sce', function ($scope, $location,$ionicPopover,youtubeApi,$sce) {
+  $scope.popolarByview = [];
+  $scope.videos = [
+    {'title':'Tv Series'},
+    {'title':'Entertainment'},
+    {'title':'News'},
+    {'title':'Shows'}
+  ];
   $scope.youtubeParams = {
     key: 'AIzaSyBBTwxet9VGR9jK9le2mE6uSvTfr2XDRJA',
-    maxResults: '5',
+    maxResults: '1',
     part: 'snippet',
     channelId: 'UCBoGmjONeZ6PL5IbK6qZv0Q',
-  }
+    order:'date',
+    type : 'video'
+  };
+  $scope.youtubeParams1 = {
+    key: 'AIzaSyBBTwxet9VGR9jK9le2mE6uSvTfr2XDRJA',
+    maxResults: '15',
+    part: 'snippet',
+    channelId: 'UCBoGmjONeZ6PL5IbK6qZv0Q',
+    order:'viewCount',
+    type : 'video'
+  };
 
-  $http.get('https://www.googleapis.com/youtube/v3/playlists', {params:$scope.youtubeParams}).success(function(response){
-    angular.forEach(response.items, function(child){
-      $scope.videos.push(child);
-      console.log($scope.videos);
-    });
+  youtubeApi.getPlaylist( $scope.youtubeParams ).then(function(response){
+      angular.forEach(response.data.items, function(child){
+        $scope.mostPopularvidoes =$sce.trustAsResourceUrl("https://www.youtube.com/embed/"+child.id.videoId);
+      });
   });
 
-
-
+  youtubeApi.getPlaylist( $scope.youtubeParams1 ).then(function(response){
+    angular.forEach(response.data.items, function(child){
+     $scope.popolarByview.push(child.snippet);
+      console.log($scope.popolarByview);
+    });
+  });
 
 
   $scope.go = function(path) {
@@ -78,4 +97,4 @@ $scope.materials = [
   {
     $scope.flag = false;
   };
-});
+}]);

@@ -1,22 +1,9 @@
 
   <ion-popover-view  class = "dropdown-menu" ng-hide = "flag">
     <ion-content>
-      <ion-list  ng-repeat = "material in materials">
-      <ion-item class = "menu-item" ng-click = "go('{{material.url}}'); flagchange()">{{material.title}}</ion-item>
-    </ion-list>
-
-
-      <div class="list card" ng-repeat="video in videos">
-        <div class="item item-text-wrap">
-          <h2>{{videov.title}}</h2>
-          <p><i class="ion ion-ios-calendar-outline"></i> {{video.date | limitTo: 10}}</p>
-        </div>
-        <div class="item item-image">
-          <img ng-src="{{video.thumbnails}}">
-        </div>
-
-      </div
-
+      <ion-list  ng-repeat = "video in videos">
+        <ion-item class = "menu-item" ng-click = "flagchange()">{{video.title}}</ion-item>
+      </ion-list>
     </ion-content>
   </ion-popover-view>
 
