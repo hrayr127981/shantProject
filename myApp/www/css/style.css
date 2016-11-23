@@ -91,3 +91,7 @@
 
   white-space: nowrap;
 }
+.thumbTitle{
+  overflow: hidden;
+  text-overflow:ellipsis;
+}

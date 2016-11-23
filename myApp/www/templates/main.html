@@ -21,6 +21,7 @@
     <ion-scroll class="horizontall" direction="x" scrollbar-x="false">
       <div class="pics" ng-repeat = "thumb in popolarByview">
         <img ng-src="{{thumb.thumbnails.high.url}}">
+        <p class = "thumbTitle">{{thumb.title}}</p>
       </div>
     </ion-scroll>
   </ion-content>

@@ -29,14 +29,16 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
 
   youtubeApi.getPlaylist( $scope.youtubeParams ).then(function(response){
       angular.forEach(response.data.items, function(child){
+        console.log(child, "sdsdsds");
         $scope.mostPopularvidoes =$sce.trustAsResourceUrl("https://www.youtube.com/embed/"+child.id.videoId);
       });
   });
 
   youtubeApi.getPlaylist( $scope.youtubeParams1 ).then(function(response){
     angular.forEach(response.data.items, function(child){
+      console.log(child);
+
      $scope.popolarByview.push(child.snippet);
-      console.log($scope.popolarByview);
     });
   });
 
