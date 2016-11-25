@@ -1,7 +1,7 @@
 <ion-view ng-controller="starterCtrl">
     <ion-nav-bar class="no-border bar-light" align-title="center">
         <ion-nav-buttons  side="left">
-          <button  class="button button-clear ion-android-menu clear button-icon icon" ng-click="popover.show($event) ; flagchange1()">
+          <button  class="button button-clear ion-android-menu clear button-icon icon" ng-click="popover.show($event) ; flagchange1();">
           </button>
         </ion-nav-buttons>
 
@@ -12,17 +12,41 @@
         <ion-nav-buttons  side="right">
           <button class="button button-clear ion-ios-search-strong clear button-icon icon"style="margin-right:10px"></button>
         </ion-nav-buttons>
+
     </ion-nav-bar>
-  <ion-content>
+  <ion-content overflow-scroll="true">
     <div class="video-container">
         <iframe ng-src="{{mostPopularvidoes}}" frameborder="0" width="560" height="315" allowfullscreen></iframe>
     </div>
+
   <p class = "parShant">Popular in Shant<br></p>
+
     <ion-scroll class="horizontall" direction="x" scrollbar-x="false">
       <div class="pics" ng-repeat = "thumb in popolarByview">
         <img ng-src="{{thumb.thumbnails.high.url}}">
         <p class = "thumbTitle">{{thumb.title}}</p>
-      </div>
+        </div>
     </ion-scroll>
+
+    <p class = "parShant">Trending now<br></p>
+    <ion-scroll class="horizontall" direction="x" scrollbar-x="false">
+      <div class="pics" ng-repeat = "relatevids in relevance">
+            <img ng-src="{{relatevids.snippet.thumbnails.high.url}}">
+              <p class = "thumbTitle">{{relatevids.snippet.title}}</p>
+      </div>
+      </ion-scroll>
+
+    <div ng-repeat="playlist in playListItems">
+    <p class = "parShant">{{playlist.titles}}<br></p>
+      <ion-scroll class="horizontall" direction="x" scrollbar-x="false">
+        <div class="pics" ng-repeat = "video in playlist.items">
+          <img ng-src="{{video.snippet.thumbnails.high.url}}">
+          <p class = "thumbTitle">{{video.snippet.title}}</p>
+        </div>
+      </ion-scroll>
+    </div>
+
+
+
   </ion-content>
 </ion-view>

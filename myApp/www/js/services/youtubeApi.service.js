@@ -7,6 +7,9 @@ myapp.factory('youtubeApi', ['$http',function($http){
   youtubeApi.getPlaylist = function(params){
    return $http.get('https://www.googleapis.com/youtube/v3/search', {params:params})
   };
+  youtubeApi.getPlaylistItem = function(params){
+    return $http.get('https://www.googleapis.com/youtube/v3/playlistItems', {params:params})
+  };
   return youtubeApi;
 }]);
 

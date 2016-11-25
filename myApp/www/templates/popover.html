@@ -2,7 +2,7 @@
   <ion-popover-view  class = "dropdown-menu" ng-hide = "flag">
     <ion-content>
       <ion-list  ng-repeat = "video in videos">
-        <ion-item class = "menu-item" ng-click = "flagchange()">{{video.title}}</ion-item>
+        <ion-item class = "menu-item" ng-click = "flagchange(); go('{{video.url}}')">{{video.title}}</ion-item>
       </ion-list>
     </ion-content>
   </ion-popover-view>
