@@ -7,6 +7,8 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
   $scope.relevance = [];
   $scope.playlists = [];
   $scope.playListItems = [];
+  $scope.army = [];
+  $scope.health = [];
   $scope.getTitle = function(title){
     console.log("title");
   }
@@ -25,78 +27,50 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
     },
     {'title':'Shows'}
   ];
-  $scope.youtubeParams = {
-    key: 'AIzaSyBBTwxet9VGR9jK9le2mE6uSvTfr2XDRJA',
-    maxResults: '1',
-    part: 'snippet',
-    channelId: 'UCBoGmjONeZ6PL5IbK6qZv0Q',
-    order:'date',
-    type : 'video'
-  };
+
+  youtubeApi.getPlaylistItem(youtubeApi.getArmy ).then(function(response){
+    angular.forEach(response.data.items, function(child){
+      $scope.army.push(child.snippet);
+    });
+  });
+
+  youtubeApi.getPlaylistItem(youtubeApi.health).then(function(response){
+    angular.forEach(response.data.items, function(child){
+      $scope.health.push(child.snippet);
+      console.log($scope.health);
+    });
+  });
 
 
-  $scope.youtubeParams1 = {
-    key: 'AIzaSyBBTwxet9VGR9jK9le2mE6uSvTfr2XDRJA',
-    maxResults: '15',
-    part: 'snippet',
-    channelId: 'UCBoGmjONeZ6PL5IbK6qZv0Q',
-    order:'viewCount',
-    type : 'video'
-  };
-
-  $scope.youtubeParams2 = {
-    key: 'AIzaSyBBTwxet9VGR9jK9le2mE6uSvTfr2XDRJA',
-    maxResults: '15',
-    part: 'snippet',
-    channelId: 'UCBoGmjONeZ6PL5IbK6qZv0Q',
-    order:'relevance',
-    type : 'video'
-  };
-
-  $scope.youtubeParams3 = {
-    key: 'AIzaSyBBTwxet9VGR9jK9le2mE6uSvTfr2XDRJA',
-    maxResults: '4',
-    part: 'snippet',
-    channelId: 'UCBoGmjONeZ6PL5IbK6qZv0Q',
-    order:'date',
-    type : 'playlist'
-  };
-
-  youtubeApi.getPlaylist( $scope.youtubeParams ).then(function(response){
+  youtubeApi.getPlaylist(youtubeApi.config.mainVideo ).then(function(response){
       angular.forEach(response.data.items, function(child){
         $scope.mostPopularvidoes =$sce.trustAsResourceUrl("https://www.youtube.com/embed/"+child.id.videoId);
       });
   });
-
-  youtubeApi.getPlaylist( $scope.youtubeParams1 ).then(function(response){
+  youtubeApi.getPlaylist( youtubeApi.config.orderByType ).then(function(response){
     angular.forEach(response.data.items, function(child){
      $scope.popolarByview.push(child.snippet);
     });
   });
-
-  youtubeApi.getPlaylist( $scope.youtubeParams2 ).then(function(response){
+  youtubeApi.getPlaylist(youtubeApi.config.orderByRelevance ).then(function(response){
     angular.forEach(response.data.items, function(child){
        $scope.relevance.push(child);
     });
   });
-
-
-  youtubeApi.getPlaylist( $scope.youtubeParams3 ).then(function(response){
-
+  youtubeApi.getPlaylist(youtubeApi.config.orderByDate ).then(function(response){
     var latestPlaylists = response.data.items;
 
 
     angular.forEach(latestPlaylists, function(value,key){
 
-      $scope.playlistParams ={
+      var playlistParams ={
 
         key: 'AIzaSyBBTwxet9VGR9jK9le2mE6uSvTfr2XDRJA',
         maxResults: '15',
         part: 'snippet',
         playlistId: latestPlaylists[key].id.playlistId,
       };
-      youtubeApi.getPlaylistItem($scope.playlistParams).then(function(response){
-
+      youtubeApi.getPlaylistItem(playlistParams).then(function(response){
         $scope.playListItems.push({
           items: response.data.items,
           titles: latestPlaylists[key].snippet.title
@@ -104,11 +78,9 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
       });
     });
   });
-
   $scope.go = function(path) {
     $location.path(path);
   };
-
   $scope.auth = [
     {
       "email":"1",

@@ -16,6 +16,19 @@
   <ion-content>
     <h3 style="text-align: center" class="parShant">Tv Series</h3>
 
+    <ion-scroll class="horizontall" direction="x" scrollbar-x="false">
+      <div class="pics" ng-repeat = "armySerial in army">
+        <img ng-src="{{armySerial.thumbnails.high.url}}">
+        <p class = "thumbTitle">{{armySerial.title}}</p>
+      </div>
+    </ion-scroll>
+
+    <ion-scroll class="horizontall" direction="x" scrollbar-x="false">
+      <div class="pics" ng-repeat = "healthSerial in health">
+        <img ng-src="{{healthSerial.thumbnails.high.url}}">
+        <p class = "thumbTitle">{{healthSerial.title}}</p>
+      </div>
+    </ion-scroll>
 
   </ion-content>
  </ion-view>

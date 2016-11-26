@@ -2,7 +2,7 @@
  * Created by Galust on 11/17/2016.
  */
 myapp.config(function($stateProvider){
-  $stateProvider.state({
+  $stateProvider.state('home',{
     url:'/home',
     templateUrl:"templates/Home.html"
   });
