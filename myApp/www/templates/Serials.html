@@ -18,7 +18,8 @@
 
     <ion-scroll class="horizontall" direction="x" scrollbar-x="false">
       <div class="pics" ng-repeat = "armySerial in army">
-        <img ng-src="{{armySerial.thumbnails.high.url}}">
+
+       <a  ui-sref="video({ id: armySerial.resourceId.videoId })"   > <img ng-src="{{armySerial.thumbnails.high.url}}"></a>
         <p class = "thumbTitle">{{armySerial.title}}</p>
       </div>
     </ion-scroll>

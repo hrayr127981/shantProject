@@ -22,6 +22,12 @@ myapp.config(function($stateProvider){
     templateUrl:"templates/Serials.html"
   });
 
+  $stateProvider.state('video',{
+    url:'/video/:id',
+    templateUrl:"templates/VideoOpen.html"
+
+  });
+
 
 
 });

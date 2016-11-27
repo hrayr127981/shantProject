@@ -10,7 +10,7 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
   $scope.army = [];
   $scope.health = [];
   $scope.getTitle = function(title){
-    console.log("title");
+
   }
   $scope.videos = [
     {
@@ -30,14 +30,16 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
 
   youtubeApi.getPlaylistItem(youtubeApi.getArmy ).then(function(response){
     angular.forEach(response.data.items, function(child){
+
       $scope.army.push(child.snippet);
+      console.log(child.snippet.resourceId.videoId)
     });
   });
 
   youtubeApi.getPlaylistItem(youtubeApi.health).then(function(response){
     angular.forEach(response.data.items, function(child){
       $scope.health.push(child.snippet);
-      console.log($scope.health);
+
     });
   });
 
