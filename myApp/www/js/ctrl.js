@@ -2,13 +2,15 @@
  * Created by Galust on 11/17/2016.
  */
 
-myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi','$sce', function ($scope, $location,$ionicPopover,youtubeApi,$sce) {
+myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi','$sce','$stateParams', function ($scope, $location,$ionicPopover,youtubeApi,$sce,$stateParams) {
   $scope.popolarByview = [];
   $scope.relevance = [];
   $scope.playlists = [];
   $scope.playListItems = [];
   $scope.army = [];
   $scope.health = [];
+  var params = $stateParams.id;
+  $scope.currVideo =$sce.trustAsResourceUrl("https://www.youtube.com/embed/"+params);
   $scope.getTitle = function(title){
 
   }
@@ -30,16 +32,13 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
 
   youtubeApi.getPlaylistItem(youtubeApi.getArmy ).then(function(response){
     angular.forEach(response.data.items, function(child){
-
       $scope.army.push(child.snippet);
-      console.log(child.snippet.resourceId.videoId)
     });
   });
 
   youtubeApi.getPlaylistItem(youtubeApi.health).then(function(response){
     angular.forEach(response.data.items, function(child){
       $scope.health.push(child.snippet);
-
     });
   });
 
@@ -73,7 +72,7 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
         playlistId: latestPlaylists[key].id.playlistId,
       };
       youtubeApi.getPlaylistItem(playlistParams).then(function(response){
-        $scope.playListItems.push({
+          $scope.playListItems.push({
           items: response.data.items,
           titles: latestPlaylists[key].snippet.title
         });

@@ -8,11 +8,14 @@
       <img src="img/Logo.png" style="vertical-align:middle" height="90%">
     </ion-nav-title>
     <ion-nav-buttons  side="right">
+
       <button class="button button-clear ion-ios-search-strong clear button-icon icon"style="margin-right:10px"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
   <ion-content>
 
-
+    <div class="video-container">
+      <iframe ng-src="{{currVideo}}" frameborder="0" width="560" height="315" allowfullscreen></iframe>
+    </div>
   </ion-content>
   </ion-view>

@@ -25,7 +25,6 @@ myapp.config(function($stateProvider){
   $stateProvider.state('video',{
     url:'/video/:id',
     templateUrl:"templates/VideoOpen.html"
-
   });
 
 
