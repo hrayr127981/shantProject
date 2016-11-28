@@ -2,7 +2,7 @@
  * Created by Galust on 11/17/2016.
  */
 
-myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi','$sce','$stateParams', function ($scope, $location,$ionicPopover,youtubeApi,$sce,$stateParams) {
+myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi','$sce','$stateParams','$http', function ($scope, $location,$ionicPopover,youtubeApi,$sce,$stateParams,$http) {
   $scope.popolarByview = [];
   $scope.relevance = [];
   $scope.playlists = [];
@@ -88,25 +88,21 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
       "password":"1"
     }
   ];
+  /* sign in*/
+
+
   $scope.log = false;
   $scope.log1 = false;
   $scope.login = function(userLogin,userPassword){
     if(userLogin && userPassword){
-      if(userLogin === $scope.auth[0].email &&  userPassword === $scope.auth[0].password)
-      {
+      var params =  {phone:userLogin, password:userPassword};
+      var url = "http://api.taxi.studio-one.am/v2/passenger-auth/";
+        $http.post(url, params).success(function(response) {
         $scope.go('/main');
+      });
+
       }
-      else
-      {
-           $scope.log1 = true;
-           $scope.log = false
-      }
-    }
-    else
-    {
-         $scope.log = true;
-         $scope.log1 = false;
-    }
+
   };
 
   $ionicPopover.fromTemplateUrl('templates/popover.html', {
