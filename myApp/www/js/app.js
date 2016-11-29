@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 var myapp = angular.module('starter', ['ionic']);
-myapp.run(function($ionicPlatform) {
+myapp.run(function($ionicPlatform,$location) {
   $ionicPlatform.ready(function() {
 
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -20,5 +20,14 @@ myapp.run(function($ionicPlatform) {
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+    if(localStorage.getItem('toksss')!== null && localStorage.getItem('toksss') !== '')
+    {
+      $location.path("/main");
+    }
+    else
+    {
+      $location.path("/home");
+    }
+
   });
 })

@@ -2,7 +2,7 @@
  * Created by Galust on 11/17/2016.
  */
 
-myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi','$sce','$stateParams','$http', function ($scope, $location,$ionicPopover,youtubeApi,$sce,$stateParams,$http) {
+myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi','$sce','$stateParams','$http','$window', function ($scope, $location,$ionicPopover,youtubeApi,$sce,$stateParams,$http,$window) {
   $scope.popolarByview = [];
   $scope.relevance = [];
   $scope.playlists = [];
@@ -95,13 +95,24 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
   $scope.log1 = false;
   $scope.login = function(userLogin,userPassword){
     if(userLogin && userPassword){
+
       var params =  {phone:userLogin, password:userPassword};
       var url = "http://api.taxi.studio-one.am/v2/passenger-auth/";
-        $http.post(url, params).success(function(response) {
-        $scope.go('/main');
-      });
+        $http.post(url, params)
+          .success(function(response) {
+            localStorage.setItem('toksss',response.token);
+           $scope.go('/main');
 
+           })
+          .error(function() {
+            $scope.log1 = true;
+          });
       }
+      else {
+
+      $scope.log = true;
+      $scope.log1 = false;
+    }
 
   };
 
