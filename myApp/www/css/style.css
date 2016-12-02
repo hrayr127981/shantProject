@@ -14,11 +14,12 @@
   border:0;
 }
 .content {
-  display: flex;
-  align-items: center;
+  -ms-transform: translate(0px, 25%);
+  -webkit-transform: translate(0px,25%);
+  transform: translate(0px,25%);
+  text-align: center;
   justify-content: center;
   overflow: hidden;
-  flex-direction: column;
 }
 
 .carousel-img{
@@ -94,6 +95,10 @@
 .thumbTitle{
   overflow: hidden;
   text-overflow:ellipsis;
+}
+.slider{
+
+
 }
 
 
