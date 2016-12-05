@@ -26,4 +26,9 @@ myapp.config(function($stateProvider){
     url:'/video/:id',
     templateUrl:"templates/VideoOpen.html"
   });
+
+  $stateProvider.state('help',{
+    url:'/help',
+    templateUrl:"templates/help.html"
+  });
 });

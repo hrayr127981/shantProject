@@ -24,10 +24,6 @@ myapp.run(function($ionicPlatform,$location) {
     {
       $location.path("/main");
     }
-
-
       $location.path("/home");
-
-
   });
 })

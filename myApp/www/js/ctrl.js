@@ -2,7 +2,7 @@
  * Created by Galust on 11/17/2016.
  */
 
-myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi','$sce','$stateParams','$http','$window', function ($scope, $location,$ionicPopover,youtubeApi,$sce,$stateParams,$http,$window) {
+myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi','$sce','$stateParams','$http','$window','$ionicHistory', function ($scope, $location,$ionicPopover,youtubeApi,$sce,$stateParams,$http,$window,$ionicHistory) {
   $scope.popolarByview = [];
   $scope.relevance = [];
   $scope.playlists = [];
@@ -11,9 +11,10 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
   $scope.health = [];
   var params = $stateParams.id;
   $scope.currVideo =$sce.trustAsResourceUrl("https://www.youtube.com/embed/"+params);
-  $scope.getTitle = function(title){
+  $scope.myGoBack = function() {
+    $ionicHistory.goBack();
+  };
 
-  }
   $scope.videos = [
     {
       'title':'Tv Series',
@@ -65,7 +66,6 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
     angular.forEach(latestPlaylists, function(value,key){
 
       var playlistParams ={
-
         key: 'AIzaSyBBTwxet9VGR9jK9le2mE6uSvTfr2XDRJA',
         maxResults: '15',
         part: 'snippet',
@@ -82,12 +82,6 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
   $scope.go = function(path) {
     $location.path(path);
   };
-  $scope.auth = [
-    {
-      "email":"1",
-      "password":"1"
-    }
-  ];
   /* sign in*/
 
 
@@ -102,7 +96,6 @@ myapp.controller('starterCtrl',['$scope','$location','$ionicPopover','youtubeApi
           .success(function(response) {
             localStorage.setItem('toksss',response.token);
            $scope.go('/main');
-
            })
           .error(function() {
             $scope.log1 = true;

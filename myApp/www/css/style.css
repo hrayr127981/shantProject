@@ -1,5 +1,7 @@
 /* Empty. Add your own CSS if you like */
-
+.back-text{
+  display:none !important;
+}
 .home-buttons{
   color: #333333 !important;
   font-size: 1em !important;
@@ -96,9 +98,14 @@
   overflow: hidden;
   text-overflow:ellipsis;
 }
-.slider{
-
-
+.loginInput{
+  height: 2.2em;
+  width:50%;
+  margin : 0 auto;
+}
+.logButton{
+  left: 2%;
+  margin-top: 1%
 }
 
 
